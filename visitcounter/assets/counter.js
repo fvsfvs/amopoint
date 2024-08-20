@@ -1,5 +1,5 @@
 (async () => {
-    const counterUrl = 'counter.php';
+    const counterUrl = 'http://r90372q4.beget.tech/visitcounter/counter.php';
     const cityRequestUrl = "http://ipwho.is/";
     const ipRequestUrl = "https://checkip.amazonaws.com/";
 
