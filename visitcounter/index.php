@@ -16,7 +16,6 @@ $visits = $charts->getVisitsByHours();
         <meta charset="UTF-8">
         <title>Счетчик посещений</title>
         <script src="https://www.google.com/jsapi"></script>
-        <script src="assets/counter.js"></script>
         <link href="assets/style.css" rel="stylesheet" />
     </head>
     <body>
