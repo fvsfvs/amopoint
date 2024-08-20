@@ -42,15 +42,25 @@ Class Charts
      */
     function getVisitsByHours() : string {
 
-        $query = "SELECT HOUR(`time`) as h, COUNT(*) AS num FROM `visits` GROUP BY h ORDER BY num DESC";
-        $hours = $this->db->select($query);
+        $fromTime = strtotime('-1 day');
+        $from = date('Y-m-d H:i:s', $fromTime);
+
+        $sql = "SELECT * FROM `visits` WHERE `time` > :from ORDER BY `time` DESC";
+        $rows = $this->db->select($sql, ['from' => $from]);
+        $visitsByHours = [];
+
+        foreach ($rows as $row){
+            $hour = strval(intval(substr($row['time'], 11, 2)));
+            if(!isset($visitsByHours[$hour]) || !in_array($row['ip'], $visitsByHours[$hour])){
+                $visitsByHours[$hour][] = $row['ip'];
+            }
+        }
 
         $visitsStr = "['Часы', 'Посещения']";
-        $existingHours = array_column($hours, 'h');
         for($i = 0; $i < 24; $i++){
-            $key = (array_search(strval($i), $existingHours));
-            if($key !== false){
-                $visitsStr .= ",[$i, {$hours[$key]['num']}]";
+            if(array_key_exists(strval($i), $visitsByHours)){
+                $num = count($visitsByHours[strval($i)]);
+                $visitsStr .= ",[$i, $num]";
             }
             else {
                 $visitsStr .= ",[$i, 0]";
