@@ -1,0 +1,25 @@
+#container{
+  margin:5px;
+}
+
+#loadResponse{
+  display: flex;
+  width: 300px;
+}
+
+#response{
+  padding:15px;
+}
+#circle {
+  width: 20px; 
+  margin: 1em auto;
+  background: silver;
+  border-radius: 50%;
+}
+  
+#circle::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  padding-top: 100%;
+}
