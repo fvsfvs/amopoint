@@ -31,7 +31,7 @@ $visits = $charts->getVisitsByHours();
                     hAxis: {title: 'Часы'},
                     vAxis: {title: 'Посещения'}
                 };
-                var chart = new google.visualization.ColumnChart(document.getElementById('visits'));
+                var chart = new google.visualization.BarChart(document.getElementById('visits'));
                 chart.draw(data, options);
 
                 var cityData = google.visualization.arrayToDataTable([
