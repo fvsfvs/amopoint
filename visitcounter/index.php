@@ -27,9 +27,9 @@ $visits = $charts->getVisitsByHours();
                     <?=$visits?>
                 ]);
                 var options = {
-                    title: 'Посещения по часам',
-                    hAxis: {title: 'Часы'},
-                    vAxis: {title: 'Посещения'}
+                    title: 'Посещения по часам за сутки',
+                    hAxis: {title: 'Визитов'},
+                    vAxis: {title: 'Часы'}
                 };
                 var chart = new google.visualization.BarChart(document.getElementById('visits'));
                 chart.draw(data, options);
